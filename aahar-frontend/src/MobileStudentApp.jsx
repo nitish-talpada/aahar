@@ -124,14 +124,14 @@ export default function MobileStudentApp() {
           <p className="text-indigo-200 text-sm font-medium mb-6">Overall Campus Rating Board</p>
           
           {/* Leaderboard Cards via Horizontal Snap Scroll */}
-          <div className="flex gap-4 overflow-x-auto pb-4 snap-x scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <div className="flex gap-4 overflow-x-auto pt-6 pb-4 snap-x scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {chefs.map((chef, idx) => {
               const stats = getChefStats(idx);
               return (
                 <div key={chef._id} className="snap-center shrink-0 w-64 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-3xl flex flex-col relative shadow-xl">
                   {idx === 0 && (
-                    <div className="absolute -top-3 -right-3 bg-yellow-400 text-yellow-900 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
-                      #1 Ranked
+                    <div className="absolute -top-4 -right-1 bg-gradient-to-r from-yellow-300 to-yellow-500 text-yellow-900 text-[11px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg border border-yellow-200 z-10">
+                      🏆 #1 Ranked
                     </div>
                   )}
                   <div className="flex items-center gap-4 mb-3">
@@ -153,8 +153,11 @@ export default function MobileStudentApp() {
                   
                   <div className="mt-auto flex justify-between items-center text-sm font-black">
                     <span className="text-yellow-400 drop-shadow-md">Total Rating</span>
-                    <span className="flex items-center gap-1 bg-white text-indigo-900 px-3 py-1 rounded-full shadow">
-                      ❤️ {chef.totalLikes}
+                    <span className="flex items-center gap-1.5 bg-white text-indigo-900 px-3 py-1 rounded-full shadow">
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-rose-500">
+                        <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                      </svg>
+                      {chef.totalLikes}
                     </span>
                   </div>
                 </div>
@@ -229,14 +232,16 @@ export default function MobileStudentApp() {
                 onClick={() => handleLike(dish._id)}
                 disabled={hasVoted || !isActiveMeal}
                 className={`
-                  flex-shrink-0 flex items-center gap-1.5 px-4 py-3 rounded-2xl text-sm font-black transition-all duration-200
+                  flex-shrink-0 flex items-center gap-2 px-4 py-3 rounded-2xl text-sm font-black transition-all duration-200
                   ${(!isActiveMeal || hasVoted)
-                    ? "bg-slate-100 text-slate-400 cursor-not-allowed border-2 border-slate-200" 
-                    : "bg-gradient-to-t from-red-600 to-red-500 text-white shadow-[0_6px_0_0_#991b1b,0_15px_20px_rgba(239,68,68,0.3)] hover:-translate-y-1 hover:shadow-[0_8px_0_0_#991b1b,0_15px_20px_rgba(239,68,68,0.4)] active:translate-y-1.5 active:shadow-[0_0px_0_0_#991b1b,0_0px_0_rgba(239,68,68,0)]"
+                    ? "bg-slate-50 text-slate-400 cursor-not-allowed border-2 border-slate-200 shadow-sm" 
+                    : "bg-white text-rose-600 border-2 border-rose-100 shadow-[0_4px_0_0_#ffe4e6,0_10px_20px_rgba(225,29,72,0.1)] hover:-translate-y-1 hover:border-rose-200 hover:shadow-[0_6px_0_0_#fecdd3,0_15px_25px_rgba(225,29,72,0.15)] active:translate-y-1 active:shadow-[0_0px_0_0_#ffe4e6,0_0px_0_rgba(225,29,72,0)]"
                   }
                 `}
               >
-                <span className={isActiveMeal && !hasVoted ? "animate-pulse" : ""}>❤️</span> 
+                <svg viewBox="0 0 24 24" fill="currentColor" className={`w-4 h-4 ${isActiveMeal && !hasVoted ? "animate-pulse" : ""}`}>
+                  <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                </svg>
                 {dish.likes}
               </button>
 
