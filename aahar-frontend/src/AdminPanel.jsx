@@ -15,7 +15,7 @@ export default function AdminPanel() {
   const [modalMode, setModalMode] = useState('add'); // 'add' or 'edit'
   const [form, setForm] = useState({ id: null, name: '', chefId: '', mealType: 'Breakfast', dayOfWeek: 'Monday' });
 
-  const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+  const API_URL = import.meta.env.VITE_API_BASE_URL || 'https://aahar-1.onrender.com';
 
   const fetchData = async () => {
     try {

@@ -30,7 +30,7 @@ export default function TVDashboard() {
         const urlParams = new URLSearchParams(window.location.search);
         const demoQuery = urlParams.get('demo') ? `?demo=${urlParams.get('demo')}` : '';
 
-        const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+        const API_URL = import.meta.env.VITE_API_BASE_URL || 'https://aahar-1.onrender.com';
         try {
             const res = await axios.get(`${API_URL}/api/menu/current${demoQuery}`);
             if(res.data.status === "Closed") {
