@@ -63,10 +63,10 @@ const getCurrentMealInfo = () => {
 	const currentDay = new Intl.DateTimeFormat("en-US", dayOptions).format(now);
 
 	let mealType = "Closed";
-	if (timeNum >= 7.75 && timeNum < 10.0) mealType = "Breakfast";
-	if (timeNum >= 12.25 && timeNum < 14.25) mealType = "Lunch";
-	if (timeNum >= 16.5 && timeNum < 17.75) mealType = "Snacks";
-	if (timeNum >= 19.5 && timeNum < 23.0) mealType = "Dinner";
+	if (timeNum >= 0 && timeNum < 11.5) mealType = "Breakfast";
+	else if (timeNum >= 11.5 && timeNum < 15.5) mealType = "Lunch";
+	else if (timeNum >= 15.5 && timeNum < 19.0) mealType = "Snacks";
+	else mealType = "Dinner";
 
 	return { mealType, currentDay };
 };
